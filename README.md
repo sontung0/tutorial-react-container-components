@@ -45,6 +45,8 @@ Về cơ bản thì component CommentList có 2 vai trò sau:
 - Load & update data
 - Display data
 
+Lý do không thể tái sử dụng được component CommentList là vì nó đã thực hiện rằng buộc 2 vai trò trên tại cùng 1 nơi.
+
 Vậy ý tưởng la chúng ta sẽ tách component CommentList thành 2 component riêng biệt theo 2 vai trò trên:
 
 - CommentListContainer: Có nhiệm vụ cung cấp và xử lý dữ liệu (Container Component)
