@@ -20,7 +20,7 @@ class CommentList extends Component {
                         {comment.content}
                         <button type="button"
                                 className="btn btn-danger btn-xs pull-right"
-                                onClick={event => this.removeComment.call(this, comment.id)}>
+                                onClick={() => this.removeComment.call(this, comment.id)}>
                             <div className="glyphicon glyphicon-remove"></div>
                         </button>
                     </li>
