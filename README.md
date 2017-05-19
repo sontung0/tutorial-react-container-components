@@ -48,7 +48,7 @@ Về cơ bản thì component CommentList có 2 vai trò sau:
 Vậy ý tưởng la chúng ta sẽ tách component CommentList thành 2 component riêng biệt theo 2 vai trò trên:
 
 - CommentListContainer: Có nhiệm vụ cung cấp và xử lý dữ liệu (Container Component)
-- CommentList: Có nhiệm vụ là hiển thị dữ liệu (Presentational Component)
+- CommentList: Có nhiệm vụ là nhận và hiển thị dữ liệu (Presentational Component)
 
 ```javascript
 class CommentListContainer extends Component {
