@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import CommentList from './CommentList';
 
 const App = () => (
     <div className="container">
         <h1>Comments</h1>
-        <CommentList/>
+        <CommentList />
     </div>
 );
 
