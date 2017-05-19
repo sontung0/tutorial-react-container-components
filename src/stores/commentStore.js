@@ -19,4 +19,8 @@ export default {
     remove: (id) => {
         comments = comments.filter(comment => comment.id !== id);
     },
+
+    fetchUserComments: () => {
+        return comments.filter(comment => comment.id % 2);
+    },
 }

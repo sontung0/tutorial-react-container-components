@@ -7,7 +7,7 @@ const CommentList = props => (
                 {comment.content}
                 <button type="button"
                         className="btn btn-danger btn-xs pull-right"
-                        onClick={event => props.onRemoveComment(comment.id)}>
+                        onClick={() => props.onRemoveComment(comment.id)}>
                     <div className="glyphicon glyphicon-remove"></div>
                 </button>
             </li>
