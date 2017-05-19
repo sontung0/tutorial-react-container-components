@@ -112,3 +112,6 @@ Như vậy là component CommentList có thể được tái sử dụng ở b�
 
 - Nhận và hiển thị data từ Container Components
 - Tạo các event để Container Components update data
+
+<p align="center"><img src="https://raw.githubusercontent.com/sontung0/react-container-components/master/public/flowchart.png" width="400"></p>
+
