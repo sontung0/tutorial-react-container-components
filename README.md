@@ -1,4 +1,4 @@
-<h1 align="center">Container and Presentational Components</h1>
+<h1 align="center">Container & Presentational Components</h1>
 
 ### 1. Xem xét ví dụ:
 
@@ -36,11 +36,77 @@ class CommentList extends Component {
 }
 ```
 
-Về cơ bản thì component của chúng ta đã đáp ứng đúng và đủ yêu cầu ban đầu. Nhưng giả sử sau này có thêm yêu cầu mới là cần hiển thị comments của user với cùng 1 format hiển thị. Hoặc là cấu trúc dữ liệu của function fetchComments() thay đổi.
+Về cơ bản thì component của chúng ta đã đáp ứng đúng và đủ yêu cầu ban đầu. Nhưng giả sử sau này có thêm yêu cầu mới là cần hiển thị comments của một user với cùng format hiển thị. Đến đây thì chúng ta nhận thấy hạn chế của component CommentList là **không thể tái sử dụng**.
 
-Đến đây thì chúng ta đã nhận thấy component CommentList có các vấn đề sau:
+### 2. Container & Presentational Components:
 
-- Không thể tái sử dụng
-- Không thể kiểm soát được cấu trúc dữ liệu đầu vào
+Về cơ bản thì component CommentList có 2 vai trò sau:
 
+- Load & update data
+- Display data
 
+Vậy ý tưởng la chúng ta sẽ tách component CommentList thành 2 component riêng biệt theo 2 vai trò trên:
+
+- CommentListContainer: Có nhiệm vụ cung cấp và xử lý dữ liệu (Container Component)
+- CommentList: Có nhiệm vụ là hiển thị dữ liệu (Presentational Component)
+
+```javascript
+class CommentListContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {comments: commentStore.fetch()};
+    }
+
+    onRemoveComment(commentId) {
+        commentStore.remove(commentId);
+        this.setState({comments: commentStore.fetch()});
+    }
+
+    render() {
+        return <CommentList comments={this.state.comments} onRemoveComment={this.onRemoveComment.bind(this)} />;
+    }
+}
+
+const CommentList = props => (
+    <ul>
+        {props.comments.map(comment => (
+            <li key={comment.id}>
+                {comment.content}
+                <button onClick={() => props.onRemoveComment(comment.id)}>Remove</button>
+            </li>
+        ))}
+    </ul>
+);
+```
+Và đề xử lý yêu cầu mới là "Hiển thị comments của một user" thì chúng ta chỉ cần tạo container UserComments như sau
+
+```javascript
+class UserComments extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {comments: commentStore.fetchUserComments()};
+    }
+
+    onRemoveComment(commentId) {
+        commentStore.remove(commentId);
+        this.setState({comments: commentStore.fetchUserComments()});
+    }
+
+    render() {
+        return <CommentList comments={this.state.comments} onRemoveComment={this.onRemoveComment.bind(this)} />;
+    }
+}
+```
+Như vậy là component CommentList có thể được tái sử dụng ở bất cứ đâu khi có nhu cầu.
+
+### 3. Tổng kết:
+
+**Container Components**
+
+- Load và truyền data xuống Presentational Components
+- Xử lý data thông qua các event của Presentational Components
+
+**Presentational Components**
+
+- Nhận và hiển thị data từ Container Components
+- Tạo các event để Container Components update data
