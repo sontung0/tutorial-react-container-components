@@ -1,7 +1,7 @@
 var comments = null;
 
 export default {
-    fetchComments: () => {
+    fetch: () => {
         if (!comments) {
             comments = [];
 
@@ -16,7 +16,7 @@ export default {
         return comments;
     },
 
-    removeComment: (id) => {
+    remove: (id) => {
         comments = comments.filter(comment => comment.id !== id);
     },
 }

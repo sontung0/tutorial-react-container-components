@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import api from '../services/api';
+import commentStore from '../stores/commentStore';
 
 class CommentList extends Component {
     constructor(props) {
         super(props);
-        this.state = {comments: api.fetchComments()};
+        this.state = {comments: commentStore.fetch()};
     }
 
     removeComment(commentId) {
-        api.removeComment(commentId);
-        this.setState({comments: api.fetchComments()});
+        commentStore.remove(commentId);
+        this.setState({comments: commentStore.fetch()});
     }
 
     render() {
