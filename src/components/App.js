@@ -5,10 +5,10 @@ import UserComments from '../containers/UserComments';
 const App = () => (
     <div className="container">
         <h1>Comments</h1>
-        <CommentListContainer/>
+        <CommentListContainer />
 
         <h1>User Comments</h1>
-        <UserComments/>
+        <UserComments />
     </div>
 );
 
