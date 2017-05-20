@@ -1,21 +1,18 @@
-import React, {Component} from 'react';
-import commentStore from '../stores/commentStore';
+import {connect} from 'react-redux'
+import {removeComment} from '../actions'
 import CommentList from '../components/CommentList';
 
-class CommentListContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {comments: commentStore.fetch()};
-    }
+const mapStateToProps = (state) => ({
+    comments: state.comments,
+});
 
-    onRemoveComment(commentId) {
-        commentStore.remove(commentId);
-        this.setState({comments: commentStore.fetch()});
-    }
+const mapDispatchToProps = (dispatch) => ({
+    onRemoveComment: (commentId) => {
+        dispatch(removeComment(commentId));
+    },
+});
 
-    render() {
-        return <CommentList comments={this.state.comments} onRemoveComment={this.onRemoveComment.bind(this)} />;
-    }
-}
-
-export default CommentListContainer;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CommentList);
