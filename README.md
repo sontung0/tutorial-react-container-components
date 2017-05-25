@@ -116,6 +116,7 @@ Như vậy là component CommentList có thể được tái sử dụng ở b�
 <p align="center"><img src="./assets/flowchart.png" width="400"></p>
 
 **Source code**
+
 - [Ví dụ trước khi áp dụng Container Components](https://github.com/sontung0/tutorial-react-container-components/tree/react-before)
 - [Ví dụ sau khi áp dụng Container Components](https://github.com/sontung0/tutorial-react-container-components/tree/react-after)
 - [Ví dụ sau khi áp dụng Container Components & Redux](https://github.com/sontung0/tutorial-react-container-components/tree/redux-after)
