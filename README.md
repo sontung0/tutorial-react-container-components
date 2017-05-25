@@ -115,3 +115,8 @@ Như vậy là component CommentList có thể được tái sử dụng ở b�
 
 <p align="center"><img src="./assets/flowchart.png" width="400"></p>
 
+**Tham khảo**
+
+https://medium.com/@learnreact/container-components-c0e67432e005
+https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
+
